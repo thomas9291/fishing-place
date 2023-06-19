@@ -3,6 +3,8 @@ import styles from "@/styles/Home.module.css";
 import { useSession, signIn, signOut } from "next-auth/react";
 import NavBar from "../../component/NavBar/NavBar";
 
+import Map from "../../component/Map/Map";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Component() {
@@ -13,6 +15,9 @@ export default function Component() {
     return (
       <>
         <NavBar onClick={() => signOut()} />
+        <div>
+          <Map />
+        </div>
       </>
     );
   }
