@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+/* import styles from "@/styles/Home.module.css"; */
 import { useSession, signIn, signOut } from "next-auth/react";
 import NavBar from "../../component/NavBar/NavBar";
 
-import Map from "../../component/Map/Map";
+import MyMap from "../../component/MyMap/MyMap";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +15,12 @@ export default function Component() {
     return (
       <>
         <NavBar onClick={() => signOut()} />
-        <div>
-          <Map />
+        <div className="d-flex">
+          <div
+            style={{ height: "600px", width: "600px", visibility: "visible" }}
+          >
+            <MyMap />
+          </div>
         </div>
       </>
     );
