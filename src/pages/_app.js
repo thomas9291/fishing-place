@@ -3,6 +3,7 @@ import Head from "next/head";
 import "@/styles/globals.css";
 import Script from "next/script";
 import { SessionProvider } from "next-auth/react";
+import { SWRConfig } from "swr";
 
 export default function App({
   Component,
@@ -31,7 +32,19 @@ export default function App({
       />
       <Script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js" />
       <SessionProvider session={session}>
-        <Component {...pageProps} />
+        <SWRConfig
+          value={{
+            fetcher: async (...args) => {
+              const response = await fetch(...args);
+              if (!response.ok) {
+                throw new Error(`Request with ${JSON.stringify(args)} failed.`);
+              }
+              return await response.json();
+            },
+          }}
+        >
+          <Component {...pageProps} />
+        </SWRConfig>
       </SessionProvider>
     </>
   );
