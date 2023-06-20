@@ -1,25 +1,30 @@
 import { Inter } from "next/font/google";
 /* import styles from "@/styles/Home.module.css"; */
 import { useSession, signIn, signOut } from "next-auth/react";
-import NavBar from "../../component/NavBar/NavBar";
+import useSWR from "swr";
 
+import NavBar from "../../component/NavBar/NavBar";
+import CartDetail from "component/CartDetail/CartDetail";
 import MyMap from "../../component/MyMap/MyMap";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Component() {
   const { data: session } = useSession();
+  const { data } = useSWR("/api/places", { fallbackData: [] });
+  console.log("data:", data);
 
   console.log(session);
   if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
-        <div className="d-flex">
-          <div
-            style={{ height: "600px", width: "600px", visibility: "visible" }}
-          >
+        <div className="d-flex flex-column align-items-center">
+          <div>
             <MyMap />
+          </div>
+          <div>
+            <CartDetail />
           </div>
         </div>
       </>
