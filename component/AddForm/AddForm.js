@@ -65,6 +65,7 @@ export default function AddForm({ onSubmit, defaultData }) {
         <div>
           <label htmlFor="description">description:</label>
           <textarea
+            className={classes.textarea}
             name="description"
             id="description"
             cols="30"
@@ -72,8 +73,8 @@ export default function AddForm({ onSubmit, defaultData }) {
             defaultValue={defaultData?.description}
           ></textarea>
         </div>
-        <div>
-          <div>
+        <div className={classes.containerCheckbox}>
+          <div className={classes.checkbox}>
             <label htmlFor="favorite">Favorite</label>
             <input
               type="checkbox"
@@ -82,7 +83,7 @@ export default function AddForm({ onSubmit, defaultData }) {
               defaultValue={defaultData?.favorite}
             />
           </div>
-          <div>
+          <div className={classes.checkbox}>
             <label htmlFor="grill">grill:</label>
             <input
               type="checkbox"
@@ -91,7 +92,7 @@ export default function AddForm({ onSubmit, defaultData }) {
               defaultValue={defaultData?.grill}
             />
           </div>
-          <div>
+          <div className={classes.checkbox}>
             <label htmlFor="beatch">beatch:</label>
             <input
               type="checkbox"
@@ -100,8 +101,8 @@ export default function AddForm({ onSubmit, defaultData }) {
               defaultValue={defaultData?.beatch}
             />
           </div>
-          <div>
-            <label htmlFor="camping">camping</label>
+          <div className={classes.checkbox}>
+            <label htmlFor="camping">camping:</label>
             <input
               type="checkbox"
               id="camping"
@@ -109,7 +110,7 @@ export default function AddForm({ onSubmit, defaultData }) {
               defaultValue={defaultData?.camping}
             />
           </div>
-          <div>
+          <div className={classes.checkbox}>
             <label htmlFor="shore">shore</label>
             <input
               type="checkbox"
@@ -118,8 +119,8 @@ export default function AddForm({ onSubmit, defaultData }) {
               defaultValue={defaultData?.shore}
             />
           </div>
-          <div>
-            <label htmlFor="boat">boat</label>
+          <div className={classes.checkbox}>
+            <label htmlFor="boat">boat:</label>
             <input
               type="checkbox"
               name="boat"

@@ -17,3 +17,22 @@
   border-radius: 1rem;
   margin-left: 1rem;
 }
+.textarea {
+  border-radius: 1rem;
+  margin: auto;
+}
+.containerCheckbox {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+.checkbox {
+  border: 1px solid black;
+  display: flex;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
