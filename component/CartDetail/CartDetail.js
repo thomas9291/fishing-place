@@ -2,6 +2,7 @@ import React from "react";
 
 export default function CartDetail({
   name,
+  address,
   latitude,
   longitude,
   favorite,
@@ -15,6 +16,7 @@ export default function CartDetail({
   return (
     <div>
       <h2>Name: {name}</h2>
+      <h4>address: {address}</h4>
       <p>latitude: {latitude}</p>
       <p>longitude: {longitude}</p>
       <p>favorite: {favorite}</p>
