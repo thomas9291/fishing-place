@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import NavBar from "../../component/NavBar/NavBar";
 import AddForm from "../../component/AddForm/AddForm";
 
-export default function create() {
+export default function Create() {
   const router = useRouter();
   const { push } = router;
   /* const places = useSWR("pages/api/places/index.js"); */

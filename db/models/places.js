@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const placeSchema = new Schema({
   name: { type: String, required: true },
+  address: { type: String, required: false },
   latitude: { type: Number, required: true },
   longitude: { type: Number, required: true },
   favorite: { type: String, required: false },
