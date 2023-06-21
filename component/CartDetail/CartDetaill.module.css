@@ -1,0 +1,24 @@
+.containerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 5em;
+}
+.listGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-content: stretch;
+  border: 1px solid withe;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+.listGroupItem {
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 1rem;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  text-align: center;
+  background-color: #abd9ff;
+}

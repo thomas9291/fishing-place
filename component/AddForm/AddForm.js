@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./AddForm.module.css";
 
 export default function AddForm({ onSubmit, defaultData }) {
   function handleSubmit(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target);
+    console.log("formDta", formData);
     const data = Object.fromEntries(formData);
     console.log("dataForm", data);
     onSubmit(data);
   }
+
   return (
     <form onSubmit={handleSubmit} className={classes.addForm}>
+      <h1 className={classes.header}>Create Place</h1>
       <div className={classes.containerForm}>
         <div className={classes.inputDiv}>
           <label htmlFor="name">Name:</label>
@@ -21,6 +25,7 @@ export default function AddForm({ onSubmit, defaultData }) {
             id="name"
             name="name"
             defaultValue={defaultData?.name}
+            required
           />
         </div>
         <div className={classes.inputDiv}>
@@ -75,61 +80,75 @@ export default function AddForm({ onSubmit, defaultData }) {
         </div>
         <div className={classes.containerCheckbox}>
           <div className={classes.checkbox}>
-            <label htmlFor="favorite">Favorite</label>
+            <label htmlFor="favorite">Favorite:</label>
             <input
+              className={classes.checkboxInput}
               type="checkbox"
               id="favorite"
               name="favorite"
               defaultValue={defaultData?.favorite}
+              value="true"
             />
           </div>
           <div className={classes.checkbox}>
             <label htmlFor="grill">grill:</label>
             <input
+              className={classes.checkboxInput}
               type="checkbox"
               id="grill"
               name="grill"
               defaultValue={defaultData?.grill}
+              value="true"
             />
           </div>
           <div className={classes.checkbox}>
             <label htmlFor="beatch">beatch:</label>
             <input
+              className={classes.checkboxInput}
               type="checkbox"
               id="beatch"
               name="beatch"
               defaultValue={defaultData?.beatch}
+              value="true"
             />
           </div>
           <div className={classes.checkbox}>
             <label htmlFor="camping">camping:</label>
             <input
+              className={classes.checkboxInput}
               type="checkbox"
               id="camping"
               name="camping"
               defaultValue={defaultData?.camping}
+              value="true"
             />
           </div>
           <div className={classes.checkbox}>
-            <label htmlFor="shore">shore</label>
+            <label htmlFor="shore">shore:</label>
             <input
+              className={classes.checkboxInput}
               type="checkbox"
               name="shore"
               id="shore"
               defaultValue={defaultData?.shore}
+              value="true"
             />
           </div>
           <div className={classes.checkbox}>
             <label htmlFor="boat">boat:</label>
             <input
+              className={classes.checkboxInput}
               type="checkbox"
               name="boat"
               id="boat"
               defaultValue={defaultData?.boat}
+              value="true"
             />
           </div>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className={classes.btn}>
+          Submit
+        </button>
       </div>
     </form>
   );
