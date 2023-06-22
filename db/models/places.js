@@ -9,7 +9,7 @@ const placeSchema = new Schema({
   description: { type: String, required: false },
   favorite: { type: String, required: false },
   grill: { type: String, required: false },
-  beatch: { type: String, required: false },
+  beach: { type: String, required: false },
   camping: { type: String, required: false },
   shore: { type: String, required: false },
   boat: { type: String, required: false },

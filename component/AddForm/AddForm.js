@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
 import classes from "./AddForm.module.css";
 
-export default function AddForm({ onSubmit, defaultData }) {
+export default function AddForm({ onSubmit, defaultData, marker }) {
   function handleSubmit(event) {
     event.preventDefault();
-
     const formData = new FormData(event.target);
     console.log("formDta", formData);
     const data = Object.fromEntries(formData);
+    data.latitude = marker.latitude;
+    data.longitude = marker.longitude;
     console.log("dataForm", data);
     onSubmit(data);
   }
+  console.log("markerForm:", marker);
 
   return (
     <form onSubmit={handleSubmit} className={classes.addForm}>
@@ -33,29 +35,9 @@ export default function AddForm({ onSubmit, defaultData }) {
           <input
             className={classes.input}
             type="text"
-            id="address"
             name="address"
+            id="address"
             defaultValue={defaultData?.address}
-          />
-        </div>
-        <div className={classes.inputDiv}>
-          <label htmlFor="latitude:">latitude:</label>
-          <input
-            className={classes.input}
-            type="text"
-            id="latitude"
-            name="latitude"
-            defaultValue={defaultData?.latitude}
-          />
-        </div>
-        <div className={classes.inputDiv}>
-          <label htmlFor="longitude:">longitude:</label>
-          <input
-            className={classes.input}
-            type="text"
-            id="longitude"
-            name="longitude"
-            defaultValue={defaultData?.longitude}
           />
         </div>
 
@@ -94,13 +76,13 @@ export default function AddForm({ onSubmit, defaultData }) {
             />
           </div>
           <div className={classes.checkbox}>
-            <label htmlFor="beatch">beatch:</label>
+            <label htmlFor="beach">beach:</label>
             <input
               className={classes.checkboxInput}
               type="checkbox"
-              id="beatch"
-              name="beatch"
-              defaultValue={defaultData?.beatch}
+              id="beach"
+              name="beach"
+              defaultValue={defaultData?.beach}
               value="true"
             />
           </div>

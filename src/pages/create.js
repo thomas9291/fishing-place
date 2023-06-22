@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import NavBar from "../../component/NavBar/NavBar";
@@ -7,7 +7,8 @@ import MyMap from "component/MyMap/MyMap";
 
 export default function Create() {
   const router = useRouter();
-
+  const [marker, setMarker] = useState();
+  console.log("marker:", marker);
   const { push } = router;
   /* const places = useSWR("pages/api/places/index.js"); */
   async function addPlace(place) {
@@ -30,11 +31,11 @@ export default function Create() {
       <NavBar />
       <div>
         <div>
-          <MyMap />
+          <MyMap marker={marker} setMarker={setMarker} />
         </div>
       </div>
       <div>
-        <AddForm onSubmit={addPlace} />
+        <AddForm onSubmit={addPlace} marker={marker} />
       </div>
     </>
   );

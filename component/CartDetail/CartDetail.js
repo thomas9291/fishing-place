@@ -12,7 +12,7 @@ export default function CartDetail({
   favorite,
   description,
   grill,
-  beatch,
+  beach,
   camping,
   shore,
   boat,
@@ -37,7 +37,7 @@ export default function CartDetail({
           <span className={classes.listGroupItem}>favorite: {favorite}</span>
           <span className={classes.listGroupItem}>grill: {grill}</span>
 
-          <span className={classes.listGroupItem}>beatch: {beatch}</span>
+          <span className={classes.listGroupItem}>beach: {beach}</span>
           <span className={classes.listGroupItem}>camping: {camping}</span>
 
           <span className={classes.listGroupItem}>shore: {shore}</span>
