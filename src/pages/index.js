@@ -20,14 +20,13 @@ export default function Component() {
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
   console.log("placesList:", placesList);
 
-  console.log(session);
   if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div>
-            <MyMap />
+            <MyMap location={placesList} />
           </div>
           <div
             style={{ width: "100%" }}
