@@ -42,7 +42,7 @@ export default function AddForm({ onSubmit, defaultData }) {
           <label htmlFor="latitude:">latitude:</label>
           <input
             className={classes.input}
-            type="number"
+            type="text"
             id="latitude"
             name="latitude"
             defaultValue={defaultData?.latitude}
@@ -52,21 +52,13 @@ export default function AddForm({ onSubmit, defaultData }) {
           <label htmlFor="longitude:">longitude:</label>
           <input
             className={classes.input}
-            type="number"
+            type="text"
             id="longitude"
             name="longitude"
             defaultValue={defaultData?.longitude}
           />
         </div>
-        {/* <div>
-        <label htmlFor="image">image:</label>
-        <input
-          type="text"
-          id="image"
-          name="image"
-          defaultValue={defaultData?.image}
-        />
-      </div> */}
+
         <div>
           <label htmlFor="description">description:</label>
           <textarea
