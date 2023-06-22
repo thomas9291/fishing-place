@@ -5,9 +5,9 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import pin from "./location_on_FILL1_wght400_GRAD0_opsz48.svg";
 
-export default function MyMap({ location }) {
+export default function MyMap({ location, marker, setMarker }) {
   /*  const [showPopup, setShowPopup] = useState(true); */
-  const [marker, setMarker] = useState();
+
   const mapRef = useRef(null);
   console.log("mapref", mapRef);
   const [viewport, setViewport] = useState({
@@ -17,8 +17,6 @@ export default function MyMap({ location }) {
   });
   const handleClick = ({ lngLat: { lat, lng } }) => {
     setMarker({ longitude: lng, latitude: lat });
-
-    console.log("marker:", marker);
   };
   return (
     <div className=" position-relative ">

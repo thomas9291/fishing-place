@@ -57,7 +57,7 @@ export default function Component() {
                   favorite,
                   description,
                   grill,
-                  beatch,
+                  beach,
                   camping,
                   shore,
                   boat,
@@ -76,7 +76,7 @@ export default function Component() {
                         favorite={favorite}
                         description={description}
                         grill={grill}
-                        beatch={beatch}
+                        beach={beach}
                         camping={camping}
                         shore={shore}
                         boat={boat}
