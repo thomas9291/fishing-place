@@ -5,17 +5,19 @@
 }
 .inputDiv {
   margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .containerForm {
   background-color: white;
   border: 1px solid black;
   padding: 1rem;
-  border-radius: 1rem;
-  margin: 1rem;
-  box-shadow: 10px 5px 5px grey;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 .input {
   border-radius: 1rem;
@@ -54,5 +56,5 @@
   color: white;
 }
 .header {
-  color: white;
+  color: #0e2954;
 }

@@ -5,7 +5,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import pin from "./location_on_FILL1_wght400_GRAD0_opsz48.svg";
 
-export default function MyMap({ location, marker, setMarker }) {
+export default function MyMap({ location, marker, /* setMarker, */ onClick }) {
   /*  const [showPopup, setShowPopup] = useState(true); */
 
   const mapRef = useRef(null);
@@ -15,9 +15,7 @@ export default function MyMap({ location, marker, setMarker }) {
     longitude: 13.381777,
     zoom: 10,
   });
-  const handleClick = ({ lngLat: { lat, lng } }) => {
-    setMarker({ longitude: lng, latitude: lat });
-  };
+
   return (
     <div className=" position-relative ">
       <Map
@@ -27,8 +25,8 @@ export default function MyMap({ location, marker, setMarker }) {
         ref={(instance) => (mapRef.current = instance)}
         minZoom={-2}
         maxZoom={15}
-        style={{ width: "100vw", height: "40vh" }}
-        onClick={handleClick}
+        style={{ width: "100vw", height: "50vh" }}
+        onClick={onClick}
         mapStyle="mapbox://styles/mapbox/streets-v12"
       >
         {location &&

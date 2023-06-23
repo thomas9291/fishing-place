@@ -30,6 +30,7 @@ nav {
   height: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
+  margin-top: 1rem;
 }
 
 .swiper-slide {
@@ -37,8 +38,7 @@ nav {
   background-size: cover;
   background-color: white;
   color: black;
-  width: 40vw;
-  height: 40vw;
+  border-radius: 1rem;
 }
 
 .swiper-slide img {

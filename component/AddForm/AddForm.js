@@ -10,15 +10,13 @@ export default function AddForm({ onSubmit, defaultData, marker }) {
     const data = Object.fromEntries(formData);
     data.latitude = marker.latitude;
     data.longitude = marker.longitude;
-    console.log("dataForm", data);
+
     onSubmit(data);
   }
-  console.log("markerForm:", marker);
-
   return (
     <form onSubmit={handleSubmit} className={classes.addForm}>
-      <h1 className={classes.header}>Create Place</h1>
       <div className={classes.containerForm}>
+        <h5 className={classes.header}>Create Place</h5>
         <div className={classes.inputDiv}>
           <label htmlFor="name">Name:</label>
           <input
@@ -40,15 +38,16 @@ export default function AddForm({ onSubmit, defaultData, marker }) {
             defaultValue={defaultData?.address}
           />
         </div>
-
-        <div>
-          <label htmlFor="description">description:</label>
+        <div className="d-flex flex-column align-items-center">
+          <label htmlFor="description" className="mb-2">
+            description:
+          </label>
           <textarea
             className={classes.textarea}
             name="description"
             id="description"
             cols="30"
-            rows="10"
+            rows="5"
             defaultValue={defaultData?.description}
           ></textarea>
         </div>
