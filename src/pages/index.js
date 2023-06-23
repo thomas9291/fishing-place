@@ -25,7 +25,7 @@ export default function Component() {
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
-          <div>
+          <div style={{ height: "50vh" }}>
             <MyMap location={placesList} />
           </div>
           <div
@@ -64,7 +64,7 @@ export default function Component() {
                   _id,
                 }) => {
                   return (
-                    <SwiperSlide key={_id}>
+                    <SwiperSlide key={_id} style={{ width: "75%" }}>
                       <CartDetail
                         name={name}
                         image={
@@ -80,6 +80,7 @@ export default function Component() {
                         camping={camping}
                         shore={shore}
                         boat={boat}
+                        id={_id}
                       />
                     </SwiperSlide>
                   );
