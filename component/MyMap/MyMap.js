@@ -5,7 +5,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import pin from "./location_on_FILL1_wght400_GRAD0_opsz48.svg";
 
-export default function MyMap({ location, marker, /* setMarker, */ onClick }) {
+export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
   /*  const [showPopup, setShowPopup] = useState(true); */
 
   const mapRef = useRef(null);
@@ -29,13 +29,15 @@ export default function MyMap({ location, marker, /* setMarker, */ onClick }) {
         onClick={onClick}
         mapStyle="mapbox://styles/mapbox/streets-v12"
       >
-        {location &&
-          location.map(({ latitude, longitude, _id }) => (
+        {locations &&
+          locations.map(({ latitude, longitude, _id }) => (
             <Marker
               key={_id}
+              onClick={() => console.log("idmarker:", _id)}
               longitude={longitude}
               latitude={latitude}
               anchor="bottom"
+              /*  defaultValue={defaultData} */
             >
               <Image src={pin} alt="marker" width={20} height={20} />
             </Marker>
