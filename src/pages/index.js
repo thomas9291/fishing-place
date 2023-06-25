@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 /* import styles from "@/styles/Home.module.css"; */
 import { useSession, signIn, signOut } from "next-auth/react";
 import useSWR from "swr";
+import Link from "next/link";
 
 import NavBar from "../../component/NavBar/NavBar";
 import CartDetail from "component/CartDetail/CartDetail";
@@ -26,7 +27,7 @@ export default function Component() {
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div style={{ height: "50vh" }}>
-            <MyMap location={placesList} />
+            <MyMap locations={placesList} />
           </div>
           <div
             style={{ width: "100%" }}
@@ -65,23 +66,24 @@ export default function Component() {
                 }) => {
                   return (
                     <SwiperSlide key={_id} style={{ width: "75%" }}>
-                      <CartDetail
-                        name={name}
-                        image={
-                          "https://images.unsplash.com/photo-1618570395080-674aff5b5046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGFjfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                        }
-                        address={address}
-                        latitude={latitude}
-                        longitude={longitude}
-                        favorite={favorite}
-                        description={description}
-                        grill={grill}
-                        beach={beach}
-                        camping={camping}
-                        shore={shore}
-                        boat={boat}
-                        id={_id}
-                      />
+                      <Link href={`/places/${_id}`}>
+                        <CartDetail
+                          name={name}
+                          image={
+                            "https://images.unsplash.com/photo-1618570395080-674aff5b5046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGFjfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+                          }
+                          address={address}
+                          latitude={latitude}
+                          longitude={longitude}
+                          favorite={favorite}
+                          description={description}
+                          grill={grill}
+                          beach={beach}
+                          camping={camping}
+                          shore={shore}
+                          boat={boat}
+                        />
+                      </Link>
                     </SwiperSlide>
                   );
                 }
