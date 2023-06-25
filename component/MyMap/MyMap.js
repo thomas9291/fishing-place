@@ -1,13 +1,11 @@
 import React, { useRef, useState } from "react";
-/* import Link from "next/link"; */
+import Link from "next/link";
 import Map, { Marker, Popup, ViewState, InteractiveMap } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
-import pin from "./location_on_FILL1_wght400_GRAD0_opsz48.svg";
+import pin from "./papapishu-chub.svg";
 
-export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
-  /*  const [showPopup, setShowPopup] = useState(true); */
-
+export default function MyMap({ locations, marker, onClick }) {
   const mapRef = useRef(null);
   console.log("mapref", mapRef);
   const [viewport, setViewport] = useState({
@@ -17,7 +15,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
   });
 
   return (
-    <div className=" position-relative ">
+    <div className=" position-relative " style={{ zIndex: "1" }}>
       <Map
         initialViewState={{ ...viewport }}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
@@ -30,16 +28,22 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
         mapStyle="mapbox://styles/mapbox/streets-v12"
       >
         {locations &&
-          locations.map(({ latitude, longitude, _id }) => (
+          locations.map(({ _id, longitude, latitude }) => (
             <Marker
               key={_id}
-              onClick={() => console.log("idmarker:", _id)}
-              longitude={longitude}
               latitude={latitude}
+              longitude={longitude}
               anchor="bottom"
-              /*  defaultValue={defaultData} */
             >
-              <Image src={pin} alt="marker" width={20} height={20} />
+              <Link href={`/places/${_id}`}>
+                <Image
+                  src={pin}
+                  alt="marker"
+                  width={20}
+                  height={20}
+                  style={{ backgroundColor: "#FBFFDC" }}
+                />
+              </Link>
             </Marker>
           ))}{" "}
         {marker && <Marker {...marker} />}

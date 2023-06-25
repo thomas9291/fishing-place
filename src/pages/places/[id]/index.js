@@ -3,11 +3,11 @@ import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import NavBar from "component/NavBar/NavBar";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
+/* import Image from "next/image"; */
 
 import CartDetail from "component/CartDetail/CartDetail";
 import MyMap from "component/MyMap/MyMap";
-import { Marker } from "react-map-gl";
+/* import { Marker } from "react-map-gl"; */
 
 export default function DetailsPage({ marker }) {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function DetailsPage({ marker }) {
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
   if (!isReady || isLoading || error)
     return <h2 className="text-light-emphasis">Loading...</h2>;
-  console.log("placeId", place);
+
   async function deletePlace() {
     await fetch(`/api/places/${id}`, {
       method: "DELETE",
