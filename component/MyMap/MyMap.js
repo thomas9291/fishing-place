@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
-import Map, { Marker, Popup, ViewState, InteractiveMap } from "react-map-gl";
+import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import pin from "./papapishu-chub.svg";
 
 export default function MyMap({ locations, marker, onClick }) {
   const mapRef = useRef(null);
-  console.log("mapref", mapRef);
   const [viewport, setViewport] = useState({
     latitude: 52.531677,
     longitude: 13.381777,
@@ -28,14 +27,14 @@ export default function MyMap({ locations, marker, onClick }) {
         mapStyle="mapbox://styles/mapbox/streets-v12"
       >
         {locations &&
-          locations.map(({ _id, longitude, latitude }) => (
+          locations.map((location) => (
             <Marker
-              key={_id}
-              latitude={latitude}
-              longitude={longitude}
+              key={location._id}
+              latitude={location.latitude}
+              longitude={location.longitude}
               anchor="bottom"
             >
-              <Link href={`/places/${_id}`}>
+              <Link href={`/places/${location._id}`}>
                 <Image
                   src={pin}
                   alt="marker"
@@ -46,6 +45,7 @@ export default function MyMap({ locations, marker, onClick }) {
               </Link>
             </Marker>
           ))}{" "}
+        {/* marker cundo se clickea en el mapa. */}
         {marker && <Marker {...marker} />}
       </Map>
     </div>
