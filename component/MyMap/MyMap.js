@@ -10,7 +10,7 @@ export default function MyMap({ locations, marker, onClick }) {
   const [viewport, setViewport] = useState({
     latitude: 52.531677,
     longitude: 13.381777,
-    zoom: 10,
+    zoom: 8,
   });
 
   return (
@@ -21,7 +21,7 @@ export default function MyMap({ locations, marker, onClick }) {
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         ref={(instance) => (mapRef.current = instance)}
         minZoom={-2}
-        maxZoom={15}
+        maxZoom={20}
         style={{ width: "100vw", height: "50vh" }}
         onClick={onClick}
         mapStyle="mapbox://styles/mapbox/streets-v12"

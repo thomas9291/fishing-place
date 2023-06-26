@@ -1,5 +1,5 @@
-import { Inter } from "next/font/google";
-/* import styles from "@/styles/Home.module.css"; */
+import React from "react";
+
 import { useSession, signIn, signOut } from "next-auth/react";
 import useSWR from "swr";
 import Link from "next/link";
@@ -14,19 +14,20 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Component() {
+export default function Grill() {
   const { data: session } = useSession();
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
-  console.log("data from index", placesList);
+  console.log("placeslISTE FROM FAVORITE PAGE:", placesList);
+  const filteredFavorite = placesList.filter(
+    (element) => element.grill === "true"
+  );
   if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div /* style={{ height: "50vh" }} */>
-            <MyMap locations={placesList} />
+            <MyMap locations={filteredFavorite} />
           </div>
           <div
             style={{ width: "100%" }}
@@ -48,7 +49,7 @@ export default function Component() {
               modules={[EffectCoverflow, Pagination]}
               className="mySwiper"
             >
-              {placesList.map(
+              {filteredFavorite.map(
                 ({
                   name,
                   address,
