@@ -25,14 +25,13 @@ export default function DetailsPage({ marker }) {
     });
     push("/");
   }
-
   if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div style={{ height: "50vh" }}>
-            <MyMap />
+            <MyMap locations={[place]} />
           </div>
           <div
             style={{ backgroundColor: "white", width: "100%" }}
@@ -41,12 +40,12 @@ export default function DetailsPage({ marker }) {
             <div>
               <button
                 type="button"
-                className="btn btn-danger text-center"
+                className="btn btn-danger text-center m-1"
                 onClick={() => deletePlace()}
               >
                 Delete
               </button>
-              <button type="button" className="btn btn-primary text-center">
+              <button type="button" className="btn btn-primary text-center m-1">
                 <Link href={`/places/${id}/edit`}>Edit</Link>
               </button>
             </div>
@@ -56,8 +55,6 @@ export default function DetailsPage({ marker }) {
                 "https://images.unsplash.com/photo-1618570395080-674aff5b5046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGFjfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
               }
               address={place.address}
-              latitude={place.latitude}
-              longitude={place.longitude}
               favorite={place.favorite}
               description={place.description}
               grill={place.grill}

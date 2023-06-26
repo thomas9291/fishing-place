@@ -33,8 +33,6 @@ export default function CartDetail({
         <div className={classes.cardBody}>
           <p className={classes.cardText}>{address}</p>
           <p className={classes.cardText}>description: {description}</p>
-          <p className={classes.cardText}>longitude: {longitude}</p>
-          <p className={classes.cardText}>latitude: {latitude}</p>
         </div>
         <div className={classes.listGroup}>
           <span className={classes.listGroupItem}>favorite: {favorite}</span>
