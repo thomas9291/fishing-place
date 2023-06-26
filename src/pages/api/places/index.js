@@ -11,7 +11,28 @@ export default async function handler(request, response) {
   if (request.method === "POST") {
     try {
       const placeData = request.body;
-      console.log("placedata:", placeData);
+      if (placeData.favorite !== "true") {
+        placeData.favorite = "false";
+      }
+      if (placeData.grill !== "true") {
+        placeData.grill = "false";
+      }
+      if (placeData.beach !== "true") {
+        placeData.beach = "false";
+      }
+      if (placeData.camping !== "true") {
+        placeData.camping = "false";
+      }
+      if (placeData.camping !== "true") {
+        placeData.camping = "false";
+      }
+      if (placeData.shore !== "true") {
+        placeData.shore = "false";
+      }
+      if (placeData.boat !== "true") {
+        placeData.boat = "false";
+      }
+
       const place = new Place(placeData);
       await place.save();
       return response.status(201).json({ status: "Place created" });

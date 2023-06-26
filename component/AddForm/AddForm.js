@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./AddForm.module.css";
 
@@ -11,7 +11,6 @@ export default function AddForm({ onSubmit, defaultData, marker }) {
     data.latitude = marker.latitude;
     data.longitude = marker.longitude;
     data._id = marker._id;
-
     onSubmit(data);
   }
   return (
@@ -52,73 +51,71 @@ export default function AddForm({ onSubmit, defaultData, marker }) {
             defaultValue={defaultData?.description}
           ></textarea>
         </div>
-        <div className={classes.containerCheckbox}>
-          <div className={classes.checkbox}>
-            <label htmlFor="favorite">Favorite:</label>
-            <input
-              className={classes.checkboxInput}
-              type="checkbox"
-              id="favorite"
-              name="favorite"
-              defaultValue={defaultData?.favorite}
-              value="true"
-            />
-          </div>
-          <div className={classes.checkbox}>
-            <label htmlFor="grill">grill:</label>
-            <input
-              className={classes.checkboxInput}
-              type="checkbox"
-              id="grill"
-              name="grill"
-              defaultValue={defaultData?.grill}
-              value="true"
-            />
-          </div>
-          <div className={classes.checkbox}>
-            <label htmlFor="beach">beach:</label>
-            <input
-              className={classes.checkboxInput}
-              type="checkbox"
-              id="beach"
-              name="beach"
-              defaultValue={defaultData?.beach}
-              value="true"
-            />
-          </div>
-          <div className={classes.checkbox}>
-            <label htmlFor="camping">camping:</label>
-            <input
-              className={classes.checkboxInput}
-              type="checkbox"
-              id="camping"
-              name="camping"
-              defaultValue={defaultData?.camping}
-              value="true"
-            />
-          </div>
-          <div className={classes.checkbox}>
-            <label htmlFor="shore">shore:</label>
-            <input
-              className={classes.checkboxInput}
-              type="checkbox"
-              name="shore"
-              id="shore"
-              defaultValue={defaultData?.shore}
-              value="true"
-            />
-          </div>
-          <div className={classes.checkbox}>
-            <label htmlFor="boat">boat:</label>
-            <input
-              className={classes.checkboxInput}
-              type="checkbox"
-              name="boat"
-              id="boat"
-              defaultValue={defaultData?.boat}
-              value="true"
-            />
-          </div>
+        <div className={classes.checkbox}>
+          <label htmlFor="favorite">favorite:</label>
+          <input
+            className={classes.checkboxInput}
+            type="checkbox"
+            id="favorite"
+            name="favorite"
+            defaultValue={defaultData?.favorite}
+            value="true"
+          />
+        </div>
+        <div className={classes.checkbox}>
+          <label htmlFor="grill">grill:</label>
+          <input
+            className={classes.checkboxInput}
+            type="checkbox"
+            id="grill"
+            name="grill"
+            defaultValue={defaultData?.grill}
+            value="true"
+          />
+        </div>
+        <div className={classes.checkbox}>
+          <label htmlFor="beach">beach:</label>
+          <input
+            className={classes.checkboxInput}
+            type="checkbox"
+            id="beach"
+            name="beach"
+            defaultValue={defaultData?.beach}
+            value="true"
+          />
+        </div>
+        <div className={classes.checkbox}>
+          <label htmlFor="camping">camping:</label>
+          <input
+            className={classes.checkboxInput}
+            type="checkbox"
+            id="camping"
+            name="camping"
+            defaultValue={defaultData?.camping}
+            value="true"
+          />
+        </div>
+        <div className={classes.checkbox}>
+          <label htmlFor="shore">shore:</label>
+          <input
+            className={classes.checkboxInput}
+            type="checkbox"
+            name="shore"
+            id="shore"
+            defaultValue={defaultData?.shore}
+            value="true"
+          />
+        </div>
+        <div className={classes.checkbox}>
+          <label htmlFor="boat">boat:</label>
+          <input
+            className={classes.checkboxInput}
+            type="checkbox"
+            name="boat"
+            id="boat"
+            defaultValue={defaultData?.boat}
+            value="true"
+          />
         </div>
         <button type="submit" className={classes.btn}>
           Submit

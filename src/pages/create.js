@@ -44,6 +44,7 @@ export default function Create() {
           </div>
         </div>
         <div>
+          {" "}
           <AddForm onSubmit={addPlace} marker={marker} />
         </div>
       </>

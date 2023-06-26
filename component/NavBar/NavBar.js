@@ -33,40 +33,50 @@ export default function NavBar({ onClick }) {
                 Add Place
               </Link>
             </li>
-            {/*  <li className="nav-item">
-              <Link className="nav-link" href="#">
-                Link
-              </Link>
-            </li> */}
-            {/*   <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
+
+            <li className="nav-item  ">
+              <a
+                className="nav-link dropdown-toggle "
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
-              </Link>
+                favorites
+              </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" href="#">
-                    Action
+                  <Link className="dropdown-item" href="/favorites">
+                    favorites
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" href="#">
-                    Another action
+                  <Link className="dropdown-item" href="/grill">
+                    grill
                   </Link>
-                </li> 
-
+                </li>
                 <li>
-                  <Link className="dropdown-item" href="#">
-                    Something else here
+                  <Link className="dropdown-item" href="/beach">
+                    beach
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" href="/camping">
+                    camping
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" href="/shore">
+                    shore
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" href="/boat">
+                    boat
                   </Link>
                 </li>
               </ul>
-            </li> */}
+            </li>
             <li className="nav-item">
               <button className="nav-link  " onClick={onClick}>
                 Sign out
