@@ -10,7 +10,6 @@ export default function AddForm({ onSubmit, defaultData, marker }) {
     const data = Object.fromEntries(formData);
     data.latitude = marker.latitude;
     data.longitude = marker.longitude;
-
     onSubmit(data);
   }
   return (
