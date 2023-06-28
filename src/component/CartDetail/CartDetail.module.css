@@ -24,3 +24,11 @@
   text-align: center;
   background-color: #abd9ff;
 }
+.cardBody,
+.cardTitle {
+  color: black;
+  background-color: #abd9ff;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid black;
+}

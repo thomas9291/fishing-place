@@ -3,28 +3,55 @@ import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import NavBar from "@/component/NavBar/NavBar";
 import { useSession, signIn, signOut } from "next-auth/react";
-/* import Image from "next/image"; */
+import { useState } from "react";
+import axios from "axios";
+import Image from "next/image";
 
 import CartDetail from "@/component/CartDetail/CartDetail";
 import MyMap from "@/component/MyMap/MyMap";
-/* import { Marker } from "react-map-gl"; */
 
-export default function DetailsPage({ marker }) {
+export default function DetailsPage() {
+  const [loading, setLoading] = useState(false);
+  const [res, setRes] = useState({});
+  const [file, setFile] = useState(null);
   const router = useRouter();
   const { isReady, push } = router;
   const { id } = router.query;
   const { data: session } = useSession();
+  const [fotoForm, setFotoForm] = useState(false);
+
+  const handelFotoForm = () => {
+    setFotoForm(!fotoForm);
+  };
 
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
+  /* place.image = []; */
   if (!isReady || isLoading || error)
     return <h2 className="text-light-emphasis">Loading...</h2>;
-
+  console.log("place:", place);
   async function deletePlace() {
     await fetch(`/api/places/${id}`, {
       method: "DELETE",
     });
     push("/");
   }
+
+  const handleSelectFile = (e) => setFile(e.target.files[0]);
+  const uploadFile = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const data = new FormData();
+
+    data.set("sample_file", file);
+    try {
+      const res = await axios.post("/api/upload/upload", data);
+      setRes(res.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   if (session) {
     return (
       <>
@@ -48,24 +75,59 @@ export default function DetailsPage({ marker }) {
               <button type="button" className="btn btn-primary text-center m-1">
                 <Link href={`/places/${id}/edit`}>Edit</Link>
               </button>
-              <button type="button" className="btn btn-primary text-center m-1">
-                <Link href={`/places/${id}/fotos`}>add fotos</Link>
+              <button
+                type="button"
+                onClick={handelFotoForm}
+                className="btn btn-success text-center m-1"
+              >
+                {fotoForm ? "back" : "add fotos"}
               </button>
             </div>
-
-            <CartDetail
-              name={place.name}
-              image={place.images}
-              address={place.address}
-              favorite={place.favorite}
-              description={place.description}
-              grill={place.grill}
-              beach={place.grill}
-              camping={place.camping}
-              shore={place.shore}
-              boat={place.boat}
-            />
+            {fotoForm && (
+              <div className="App">
+                <label htmlFor="file" className="btn btn-grey">
+                  {" "}
+                  select file
+                </label>
+                <input
+                  id="file"
+                  type="file"
+                  onChange={handleSelectFile}
+                  multiple={false}
+                />{" "}
+              </div>
+            )}
+            {file && (
+              <div>
+                <Image
+                  src={res.url}
+                  alt="image from autor"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            )}
+            <div>
+              {file && (
+                <>
+                  <button className="btn-green" onClick={uploadFile}>
+                    {loading ? "uploading..." : "upload to Cloudinary"}
+                  </button>
+                </>
+              )}
+            </div>
           </div>
+          <CartDetail
+            name={place.name}
+            address={place.address}
+            favorite={place.favorite}
+            description={place.description}
+            grill={place.grill}
+            beach={place.grill}
+            camping={place.camping}
+            shore={place.shore}
+            boat={place.boat}
+          />
         </div>
       </>
     );

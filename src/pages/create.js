@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 import NavBar from "../component/NavBar/NavBar";
-import AddForm from "../component/AddForm/addForm";
+import AddForm from "../component/AddForm/AddForm";
 import MyMap from "@/component/MyMap/MyMap";
+/* import AddFotos from "@/component/AddFotos/Addfotos"; */
 
 /* import { MappedImage } from "@/services/ImageService"; */
 

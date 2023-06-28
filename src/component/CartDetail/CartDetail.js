@@ -1,15 +1,11 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
 
 import classes from "./CartDetail.module.css";
 
 export default function CartDetail({
   name,
-  image,
+
   address,
-  latitude,
-  longitude,
   favorite,
   description,
   grill,
@@ -23,18 +19,10 @@ export default function CartDetail({
     <>
       <div className={classes.containerCard}>
         <h5 className={classes.cardTitle}>{name}</h5>
-        <Image
-          src={image}
-          width={200}
-          height={200}
-          alt="Picture of the author"
-        />
 
         <div className={classes.cardBody}>
           <p className={classes.cardText}>{address}</p>
           <p className={classes.cardText}>description: {description}</p>
-          <p className={classes.cardText}>longitude: {longitude}</p>
-          <p className={classes.cardText}>latitude: {latitude}</p>
         </div>
         <div className={classes.listGroup}>
           <span className={classes.listGroupItem}>favorite: {favorite}</span>

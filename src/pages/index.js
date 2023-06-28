@@ -52,7 +52,6 @@ export default function Component() {
                 ({
                   name,
                   address,
-                  images,
                   latitude,
                   longitude,
                   favorite,
@@ -70,9 +69,6 @@ export default function Component() {
                         <CartDetail
                           name={name}
                           address={address}
-                          image={
-                            "https://images.unsplash.com/photo-1618570395080-674aff5b5046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGFjfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                          }
                           latitude={latitude}
                           longitude={longitude}
                           favorite={favorite}

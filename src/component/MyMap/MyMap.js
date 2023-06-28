@@ -9,7 +9,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
   /*  const [showPopup, setShowPopup] = useState(true); */
 
   const mapRef = useRef(null);
-  console.log("mapref", mapRef);
+
   const [viewport, setViewport] = useState({
     latitude: 52.531677,
     longitude: 13.381777,
