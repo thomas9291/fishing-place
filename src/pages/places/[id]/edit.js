@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import AddForm from "component/AddForm/AddForm";
-import NavBar from "component/NavBar/NavBar";
-import MyMap from "component/MyMap/MyMap";
+import AddForm from "@/component/AddForm/AddForm";
+import NavBar from "@/component/NavBar/NavBar";
+import MyMap from "@/component/MyMap/MyMap";
 import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 

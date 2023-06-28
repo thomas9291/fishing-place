@@ -4,9 +4,9 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import useSWR from "swr";
 import Link from "next/link";
 
-import NavBar from "../../component/NavBar/NavBar";
-import CartDetail from "component/CartDetail/CartDetail";
-import MyMap from "../../component/MyMap/MyMap";
+import NavBar from "../component/NavBar/NavBar";
+import CartDetail from "@/component/CartDetail/CartDetail";
+import MyMap from "../component/MyMap/MyMap";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

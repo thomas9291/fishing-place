@@ -4,9 +4,9 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import useSWR from "swr";
 import Link from "next/link";
 
-import NavBar from "../../component/NavBar/NavBar";
-import CartDetail from "component/CartDetail/CartDetail";
-import MyMap from "../../component/MyMap/MyMap";
+import NavBar from "../component/NavBar/NavBar";
+import CartDetail from "../component/CartDetail/CartDetail";
+import MyMap from "../component/MyMap/MyMap";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -19,7 +19,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Component() {
   const { data: session } = useSession();
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
-  console.log("data from index", placesList);
+
   if (session) {
     return (
       <>
@@ -52,6 +52,7 @@ export default function Component() {
                 ({
                   name,
                   address,
+                  images,
                   latitude,
                   longitude,
                   favorite,
@@ -68,10 +69,10 @@ export default function Component() {
                       <Link href={`/places/${_id}`}>
                         <CartDetail
                           name={name}
+                          address={address}
                           image={
                             "https://images.unsplash.com/photo-1618570395080-674aff5b5046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGFjfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
                           }
-                          address={address}
                           latitude={latitude}
                           longitude={longitude}
                           favorite={favorite}

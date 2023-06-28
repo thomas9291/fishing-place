@@ -16,8 +16,8 @@ export default function NavBar({ onClick }) {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
           aria-expanded="false"
+          aria-controls="navbarSupportedContent"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
@@ -34,15 +34,15 @@ export default function NavBar({ onClick }) {
               </Link>
             </li>
 
-            <li className="nav-item  ">
+            <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle "
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                favorites
+                favorite
               </a>
               <ul className="dropdown-menu">
                 <li>
@@ -55,14 +55,10 @@ export default function NavBar({ onClick }) {
                     grill
                   </Link>
                 </li>
+
                 <li>
-                  <Link className="dropdown-item" href="/beach">
-                    beach
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" href="/camping">
-                    camping
+                  <Link className="dropdown-item" href="/boat">
+                    boat
                   </Link>
                 </li>
                 <li>
@@ -71,8 +67,13 @@ export default function NavBar({ onClick }) {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" href="/boat">
-                    boat
+                  <Link className="dropdown-item" href="/beach">
+                    beach
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" href="/camping">
+                    camping
                   </Link>
                 </li>
               </ul>

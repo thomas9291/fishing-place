@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import classes from "./CartDetaill.module.css";
+import classes from "./CartDetail.module.css";
 
 export default function CartDetail({
   name,
@@ -33,6 +33,8 @@ export default function CartDetail({
         <div className={classes.cardBody}>
           <p className={classes.cardText}>{address}</p>
           <p className={classes.cardText}>description: {description}</p>
+          <p className={classes.cardText}>longitude: {longitude}</p>
+          <p className={classes.cardText}>latitude: {latitude}</p>
         </div>
         <div className={classes.listGroup}>
           <span className={classes.listGroupItem}>favorite: {favorite}</span>

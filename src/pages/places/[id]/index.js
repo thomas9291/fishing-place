@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
-import NavBar from "component/NavBar/NavBar";
+import NavBar from "@/component/NavBar/NavBar";
 import { useSession, signIn, signOut } from "next-auth/react";
 /* import Image from "next/image"; */
 
-import CartDetail from "component/CartDetail/CartDetail";
-import MyMap from "component/MyMap/MyMap";
+import CartDetail from "@/component/CartDetail/CartDetail";
+import MyMap from "@/component/MyMap/MyMap";
 /* import { Marker } from "react-map-gl"; */
 
 export default function DetailsPage({ marker }) {
@@ -48,12 +48,14 @@ export default function DetailsPage({ marker }) {
               <button type="button" className="btn btn-primary text-center m-1">
                 <Link href={`/places/${id}/edit`}>Edit</Link>
               </button>
+              <button type="button" className="btn btn-primary text-center m-1">
+                <Link href={`/places/${id}/fotos`}>add fotos</Link>
+              </button>
             </div>
+
             <CartDetail
               name={place.name}
-              image={
-                "https://images.unsplash.com/photo-1618570395080-674aff5b5046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGFjfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-              }
+              image={place.images}
               address={place.address}
               favorite={place.favorite}
               description={place.description}
