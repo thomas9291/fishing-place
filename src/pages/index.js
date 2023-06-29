@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { useSession, signIn, signOut } from "next-auth/react";
 import useSWR from "swr";
 import Link from "next/link";
+import Image from "next/image";
 
 import NavBar from "../component/NavBar/NavBar";
 import CartDetail from "../component/CartDetail/CartDetail";
@@ -52,6 +53,7 @@ export default function Component() {
                 ({
                   name,
                   address,
+                  images,
                   latitude,
                   longitude,
                   favorite,
@@ -66,6 +68,16 @@ export default function Component() {
                   return (
                     <SwiperSlide key={_id} style={{ width: "75%" }}>
                       <Link href={`/places/${_id}`}>
+                        <Image
+                          style={{
+                            objectFit: "contain",
+                            margin: "1rem",
+                          }}
+                          src={images[0]}
+                          width={200}
+                          height={200}
+                          alt="foto from autor"
+                        />
                         <CartDetail
                           name={name}
                           address={address}

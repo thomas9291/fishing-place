@@ -113,10 +113,7 @@ export default function DetailsPage() {
               </>
             )}
 
-            <div
-              style={{ width: "100%" }}
-              className="border border-3 border-white"
-            >
+            <div className="border border-3 border-white">
               <Swiper
                 effect={"coverflow"}
                 grabCursor={true}

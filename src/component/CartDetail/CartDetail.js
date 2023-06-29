@@ -1,10 +1,11 @@
 import React from "react";
 
 import classes from "./CartDetail.module.css";
+import Image from "next/image";
 
 export default function CartDetail({
   name,
-
+  image,
   address,
   favorite,
   description,
@@ -13,13 +14,14 @@ export default function CartDetail({
   camping,
   shore,
   boat,
-  _id,
 }) {
   return (
     <>
       <div className={classes.containerCard}>
         <h5 className={classes.cardTitle}>{name}</h5>
-
+        {/* <div style={{ width: "100%", margin: "0.5rem" }}>
+          <Image src={image} width={200} height={200} alt="foto from autor" />
+        </div> */}
         <div className={classes.cardBody}>
           <p className={classes.cardText}>{address}</p>
           <p className={classes.cardText}>description: {description}</p>
