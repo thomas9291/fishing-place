@@ -13,7 +13,7 @@ const placeSchema = new Schema({
   camping: { type: String, required: false },
   shore: { type: String, required: false },
   boat: { type: String, required: false },
-  /* images: { type: [Schema.Types.ObjectId], ref: "Image" }, */
+  images: { type: [String], required: false },
 });
 const Place = mongoose.models.Place || mongoose.model("Place", placeSchema);
 

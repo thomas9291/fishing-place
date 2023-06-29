@@ -25,7 +25,7 @@ export default function DetailsPage() {
   };
 
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
-  /* place.image = []; */
+
   if (!isReady || isLoading || error)
     return <h2 className="text-light-emphasis">Loading...</h2>;
   console.log("place:", place);
@@ -43,8 +43,10 @@ export default function DetailsPage() {
     const data = new FormData();
 
     data.set("sample_file", file);
+    data.set("placeId", id);
     try {
       const res = await axios.post("/api/upload/upload", data);
+
       setRes(res.data);
     } catch (error) {
       console.log(error);
@@ -110,8 +112,8 @@ export default function DetailsPage() {
             <div>
               {file && (
                 <>
-                  <button className="btn-green" onClick={uploadFile}>
-                    {loading ? "uploading..." : "upload to Cloudinary"}
+                  <button className="btn btn-success" onClick={uploadFile}>
+                    {loading ? "uploading..." : " upload "}
                   </button>
                 </>
               )}
