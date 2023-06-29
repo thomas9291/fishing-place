@@ -3,7 +3,7 @@ import Link from "next/link";
 import Map, { Marker, Popup, ViewState, InteractiveMap } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
-import pin from "./Sucker-.svg";
+import pin from "./location_on_FILL1_wght400_GRAD0_opsz48.svg";
 
 export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
   /*  const [showPopup, setShowPopup] = useState(true); */
@@ -27,7 +27,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
         maxZoom={15}
         style={{ width: "100vw", height: "50vh" }}
         onClick={onClick}
-        mapStyle="mapbox://styles/mapbox/streets-v12"
+        mapStyle="mapbox://styles/thomas9291/cljh3lnll00e401pi8m769f8e"
       >
         {locations &&
           locations.map(({ latitude, longitude, _id }) => (
@@ -38,7 +38,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
               anchor="bottom"
             >
               <Link href={`/places/${_id}`}>
-                <Image src={pin} alt="marker" width={20} height={20} />
+                <Image src={pin} alt="marker" width={30} height={30} />
               </Link>
             </Marker>
           ))}{" "}
