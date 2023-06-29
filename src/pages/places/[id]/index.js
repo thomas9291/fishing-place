@@ -3,12 +3,18 @@ import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import NavBar from "@/component/NavBar/NavBar";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 
 import CartDetail from "@/component/CartDetail/CartDetail";
 import MyMap from "@/component/MyMap/MyMap";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { EffectCoverflow, Pagination } from "swiper";
 
 export default function DetailsPage() {
   const [loading, setLoading] = useState(false);
@@ -41,11 +47,10 @@ export default function DetailsPage() {
     setLoading(true);
     e.preventDefault();
     const data = new FormData();
-
     data.set("sample_file", file);
     data.set("placeId", id);
     try {
-      const res = await axios.post("/api/upload/upload", data);
+      const res = await axios.post(`/api/upload/upload?id=${id}`, data);
 
       setRes(res.data);
     } catch (error) {
@@ -99,37 +104,64 @@ export default function DetailsPage() {
                 />{" "}
               </div>
             )}
+
             {file && (
-              <div>
-                <Image
-                  src={res.url}
-                  alt="image from autor"
-                  width={200}
-                  height={200}
-                />
-              </div>
+              <>
+                <button className="btn btn-success" onClick={uploadFile}>
+                  {loading ? "uploading..." : " upload "}
+                </button>
+              </>
             )}
+
+            <div
+              style={{ width: "100%" }}
+              className="border border-3 border-white"
+            >
+              <Swiper
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={"auto"}
+                coverflowEffect={{
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                  slideShadows: true,
+                }}
+                pagination={true}
+                modules={[EffectCoverflow, Pagination]}
+                className="mySwiper"
+              >
+                {place.images.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <Image
+                        src={image}
+                        alt="image from autor"
+                        width={200}
+                        height={200}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+
             <div>
-              {file && (
-                <>
-                  <button className="btn btn-success" onClick={uploadFile}>
-                    {loading ? "uploading..." : " upload "}
-                  </button>
-                </>
-              )}
+              <CartDetail
+                name={place.name}
+                address={place.address}
+                favorite={place.favorite}
+                description={place.description}
+                grill={place.grill}
+                beach={place.grill}
+                camping={place.camping}
+                shore={place.shore}
+                boat={place.boat}
+              />
             </div>
           </div>
-          <CartDetail
-            name={place.name}
-            address={place.address}
-            favorite={place.favorite}
-            description={place.description}
-            grill={place.grill}
-            beach={place.grill}
-            camping={place.camping}
-            shore={place.shore}
-            boat={place.boat}
-          />
         </div>
       </>
     );
