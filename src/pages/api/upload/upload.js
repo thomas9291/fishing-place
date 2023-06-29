@@ -17,25 +17,27 @@ function runMiddleware(req, res, fn) {
     });
   });
 }
+//req.body.id
 const handler = async (req, res) => {
-  console.log("request body:", req.body);
   try {
     await runMiddleware(req, res, myUploadMiddleware);
     const b64 = Buffer.from(req.file.buffer).toString("base64");
     let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
     const cldRes = await handleUpload(dataURI);
     res.json(cldRes);
-    console.log("cloud response", cldRes);
+    console.log("request query id ", req.query.id);
+
     if (cldRes) {
       const placeToUpdate = await Place.updateOne(
-        { _id: _id },
-        { $addToSet: { images: cldRes.url } }
+        { _id: req.query.id },
+        {
+          $addToSet: { images: cldRes.url },
+        }
       );
 
       console.log("placeToUpdate:", placeToUpdate);
       return res.status(200).json(placeToUpdate);
     }
-    console.log("cloud response", cldRes);
   } catch (error) {
     console.log(error);
     res.send({
