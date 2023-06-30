@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import User from "./user";
 const { Schema } = mongoose;
 
 const placeSchema = new Schema({
@@ -14,6 +15,7 @@ const placeSchema = new Schema({
   shore: { type: String, required: false },
   boat: { type: String, required: false },
   images: { type: [String], required: false },
+  user: { type: Schema.Types.ObjectId, ref: "User" },
 });
 const Place = mongoose.models.Place || mongoose.model("Place", placeSchema);
 

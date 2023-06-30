@@ -19,9 +19,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Component() {
   const { data: session } = useSession();
+
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
 
-  if (session) {
+  if (session /* ?.user */) {
+    /* session.user.id = user._id;
+    console.log("session id from grill page:", session.user.id); */
+    console.log("session from places api:", session);
     return (
       <>
         <NavBar onClick={() => signOut()} />
@@ -68,18 +72,9 @@ export default function Component() {
                   return (
                     <SwiperSlide key={_id} style={{ width: "75%" }}>
                       <Link href={`/places/${_id}`}>
-                        <Image
-                          style={{
-                            objectFit: "contain",
-                            margin: "1rem",
-                          }}
-                          src={images[0]}
-                          width={200}
-                          height={200}
-                          alt="foto from autor"
-                        />
                         <CartDetail
                           name={name}
+                          images={images[0]}
                           address={address}
                           latitude={latitude}
                           longitude={longitude}

@@ -16,6 +16,7 @@ export default function Create() {
   const { push } = router;
   /* const places = useSWR("pages/api/places/index.js"); */
   const { data: session } = useSession();
+
   async function addPlace(place) {
     const response = await fetch("/api/places", {
       method: "POST",

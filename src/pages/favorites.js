@@ -17,7 +17,6 @@ import { EffectCoverflow, Pagination } from "swiper";
 export default function Favorites() {
   const { data: session } = useSession();
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
-  console.log("placeslISTE FROM FAVORITE PAGE:", placesList);
   const filteredFavorite = placesList.filter(
     (element) => element.favorite === "true"
   );
@@ -52,6 +51,7 @@ export default function Favorites() {
               {filteredFavorite.map(
                 ({
                   name,
+                  images,
                   address,
                   latitude,
                   longitude,
@@ -69,9 +69,7 @@ export default function Favorites() {
                       <Link href={`/places/${_id}`}>
                         <CartDetail
                           name={name}
-                          image={
-                            "https://images.unsplash.com/photo-1618570395080-674aff5b5046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGFjfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                          }
+                          images={images[0]}
                           address={address}
                           latitude={latitude}
                           longitude={longitude}

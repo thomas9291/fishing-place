@@ -1,7 +1,7 @@
 import multer from "multer";
 import { handleUpload } from "../../../../helper";
 
-import Place from "db/models/places";
+import Place from "db/models/place";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -35,7 +35,6 @@ const handler = async (req, res) => {
         }
       );
 
-      console.log("placeToUpdate:", placeToUpdate);
       return res.status(200).json(placeToUpdate);
     }
   } catch (error) {
