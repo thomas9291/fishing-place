@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function CartDetail({
   name,
-  image,
+  images,
   address,
   favorite,
   description,
@@ -19,9 +19,9 @@ export default function CartDetail({
     <>
       <div className={classes.containerCard}>
         <h5 className={classes.cardTitle}>{name}</h5>
-        {/* <div style={{ width: "100%", margin: "0.5rem" }}>
-          <Image src={image} width={200} height={200} alt="foto from autor" />
-        </div> */}
+        <div style={{ width: "100%", margin: "0.5rem" }}>
+          <Image src={images} width={200} height={200} alt="foto from autor" />
+        </div>
         <div className={classes.cardBody}>
           <p className={classes.cardText}>{address}</p>
           <p className={classes.cardText}>description: {description}</p>

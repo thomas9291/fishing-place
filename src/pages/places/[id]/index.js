@@ -148,6 +148,7 @@ export default function DetailsPage() {
             <div>
               <CartDetail
                 name={place.name}
+                images={place.images[0]}
                 address={place.address}
                 favorite={place.favorite}
                 description={place.description}
