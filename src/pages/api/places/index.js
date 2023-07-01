@@ -9,10 +9,9 @@ export default async function Handler(request, response) {
   await dbConnect();
   const session = await getServerSession(request, response, authOptions);
   const id = session?.user?._id;
-  console.log("session id:", id);
   if (request.method === "GET") {
     //filter the place where the user is login
-    const places = await Place.find();
+    const places = await Place.find({ user: id });
     return response.status(200).json(places);
   }
   if (request.method === "POST") {
@@ -42,8 +41,8 @@ export default async function Handler(request, response) {
         if (placeData.boat !== "true") {
           placeData.boat = "false";
         }
-        placeData.user = id;
         //add the place must have a user field
+        placeData.user = id;
 
         const place = new Place(placeData);
         await place.save();

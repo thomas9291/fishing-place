@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 import NavBar from "../component/NavBar/NavBar";
 import AddForm from "../component/AddForm/AddForm";
 import MyMap from "@/component/MyMap/MyMap";
-/* import AddFotos from "@/component/AddFotos/Addfotos"; */
-
-/* import { MappedImage } from "@/services/ImageService"; */
 
 export default function Create() {
   const router = useRouter();
   const [marker, setMarker] = useState();
 
   const { push } = router;
-  /* const places = useSWR("pages/api/places/index.js"); */
   const { data: session } = useSession();
 
   async function addPlace(place) {

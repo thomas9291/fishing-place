@@ -14,13 +14,9 @@ export default function App({
       <Head>
         <title>Fishing Place</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
-          /* rel="stylesheet" */
-        />
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" />
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-          /* rel="stylesheet" */
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
           crossOrigin="anonymous"
         />

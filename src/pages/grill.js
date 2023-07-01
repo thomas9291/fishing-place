@@ -25,7 +25,7 @@ export default function Grill() {
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
-          <div /* style={{ height: "50vh" }} */>
+          <div>
             <MyMap locations={filteredFavorite} />
           </div>
           <div
