@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { useSession, signIn, signOut } from "next-auth/react";
 import useSWR from "swr";
 import Link from "next/link";
-import Image from "next/image";
 
 import NavBar from "../component/NavBar/NavBar";
 import CartDetail from "../component/CartDetail/CartDetail";
@@ -21,16 +20,12 @@ export default function Component() {
   const { data: session } = useSession();
 
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
-
-  if (session /* ?.user */) {
-    /* session.user.id = user._id;
-    console.log("session id from grill page:", session.user.id); */
-    console.log("session from places api:", session);
+  if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
-          <div /* style={{ height: "50vh" }} */>
+          <div>
             <MyMap locations={placesList} />
           </div>
           <div
