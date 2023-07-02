@@ -36,6 +36,7 @@
     "styled-components": "^6.0.0-rc.3",
     "swiper": "^9.4.1",
     "swr": "^2.1.5",
+    "uid": "^2.0.2",
     "use-google-maps-script": "^0.1.2",
     "use-places-autocomplete": "^4.0.0",
     "validator": "^13.9.0"

@@ -20,6 +20,7 @@ export default function Component() {
   const { data: session } = useSession();
 
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
+  console.log("placesList from home page:", placesList);
   if (session) {
     return (
       <>

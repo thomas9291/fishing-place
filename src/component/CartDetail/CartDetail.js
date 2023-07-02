@@ -22,20 +22,24 @@ export default function CartDetail({
         <div style={{ width: "100%", margin: "0.5rem" }}>
           <Image src={images} width={200} height={200} alt="Waiting for foto" />
         </div>
+        {/* <div className={classes.cardBody}> */}
         <div className={classes.cardBody}>
-          <p className={classes.cardText}>{address}</p>
-          <p className={classes.cardText}>description: {description}</p>
+          <p>{address}</p>
         </div>
-        <div className={classes.listGroup}>
-          <span className={classes.listGroupItem}>favorite: {favorite}</span>
-          <span className={classes.listGroupItem}>grill: {grill}</span>
-
-          <span className={classes.listGroupItem}>beach: {beach}</span>
-          <span className={classes.listGroupItem}>camping: {camping}</span>
-
-          <span className={classes.listGroupItem}>shore: {shore}</span>
-          <span className={classes.listGroupItem}>boat: {boat}</span>
+        <div className={classes.cardBody}>
+          <p>description: {description}</p>
         </div>
+      </div>
+      {/*  </div> */}
+      <div className={classes.listGroup}>
+        <span className={classes.listGroupItem}>favorite: {favorite}</span>
+        <span className={classes.listGroupItem}>grill: {grill}</span>
+
+        <span className={classes.listGroupItem}>beach: {beach}</span>
+        <span className={classes.listGroupItem}>camping: {camping}</span>
+
+        <span className={classes.listGroupItem}>shore: {shore}</span>
+        <span className={classes.listGroupItem}>boat: {boat}</span>
       </div>
     </>
   );

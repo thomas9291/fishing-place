@@ -34,7 +34,6 @@ export default function DetailsPage() {
 
   if (!isReady || isLoading || error)
     return <h2 className="text-light-emphasis">Loading...</h2>;
-  console.log("place:", place);
   async function deletePlace() {
     await fetch(`/api/places/${id}`, {
       method: "DELETE",
