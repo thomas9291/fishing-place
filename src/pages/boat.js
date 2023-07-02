@@ -17,7 +17,6 @@ import { EffectCoverflow, Pagination } from "swiper";
 export default function Boat() {
   const { data: session } = useSession();
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
-  console.log("placeslISTE FROM FAVORITE PAGE:", placesList);
   const filteredFavorite = placesList.filter(
     (element) => element.boat === "true"
   );
@@ -26,7 +25,7 @@ export default function Boat() {
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
-          <div /* style={{ height: "50vh" }} */>
+          <div>
             <MyMap locations={filteredFavorite} />
           </div>
           <div

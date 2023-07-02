@@ -1,6 +1,6 @@
 import multer from "multer";
 import { handleUpload } from "../../../../helper";
-
+import { uid } from "uid";
 import Place from "db/models/place";
 
 const storage = multer.memoryStorage();
@@ -19,13 +19,13 @@ function runMiddleware(req, res, fn) {
 }
 //req.body.id
 const handler = async (req, res) => {
+  const id = uid();
   try {
     await runMiddleware(req, res, myUploadMiddleware);
     const b64 = Buffer.from(req.file.buffer).toString("base64");
     let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
     const cldRes = await handleUpload(dataURI);
     res.json(cldRes);
-    console.log("request query id ", req.query.id);
 
     if (cldRes) {
       const placeToUpdate = await Place.updateOne(
