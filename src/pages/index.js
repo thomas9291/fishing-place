@@ -7,6 +7,10 @@ import Link from "next/link";
 import NavBar from "../component/NavBar/NavBar";
 import CartDetail from "../component/CartDetail/CartDetail";
 import MyMap from "../component/MyMap/MyMap";
+//map geolocalisation
+import { useRef, useEffect } from "react";
+import { GeolocateControl } from "react-map-gl";
+//map geolocalisation
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -18,6 +22,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Component() {
   const { data: session } = useSession();
+  //map geolocalisation component
+  const geoControlRef = useRef();
+  useEffect(() => {
+    // Activate as soon as the control is loaded
+    geoControlRef.current?.trigger();
+  }, []);
+  //map geolocalisation component
 
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
   console.log("placesList from home page:", placesList);
@@ -27,7 +38,9 @@ export default function Component() {
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div>
-            <MyMap locations={placesList} />
+            <MyMap locations={placesList}>
+              <GeolocateControl ref={geoControlRef} />
+            </MyMap>
           </div>
           <div
             style={{ width: "100%" }}
