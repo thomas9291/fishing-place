@@ -2,6 +2,7 @@ import multer from "multer";
 import { handleUpload } from "../../../../helper";
 
 import Place from "db/models/place";
+import { uid } from "uid";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
