@@ -1,13 +1,11 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
-import Map, { Marker, Popup, ViewState, InteractiveMap } from "react-map-gl";
+import Map, { Marker, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import pin from "./location_on_FILL1_wght400_GRAD0_opsz48.svg";
 
-export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
-  /*  const [showPopup, setShowPopup] = useState(true); */
-
+export default function MyMap({ locations, marker, onClick }) {
   const mapRef = useRef(null);
 
   const [viewport, setViewport] = useState({
@@ -29,6 +27,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
         onClick={onClick}
         mapStyle="mapbox://styles/thomas9291/cljn9e70f00eg01o4edit1358"
       >
+        <GeolocateControl />
         {locations &&
           locations.map(({ latitude, longitude, _id }) => (
             <Marker
