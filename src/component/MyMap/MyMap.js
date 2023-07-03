@@ -13,7 +13,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
   const [viewport, setViewport] = useState({
     latitude: 52.531677,
     longitude: 13.381777,
-    zoom: 10,
+    zoom: 2,
   });
 
   return (
