@@ -99,7 +99,12 @@ export default function Component() {
         className="d-flex flex-column card mx-auto mt-5 p-2"
         style={{ width: "30%" }}
       >
+        <h1 className="text-center">Fishing Place</h1>
+
         <h4 className="text-center"> Not signed in </h4>
+        <p className="text-center">
+          to have access to your account, first sign in!
+        </p>
 
         <button
           type="button"
