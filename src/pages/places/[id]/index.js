@@ -58,6 +58,7 @@ export default function DetailsPage() {
       setLoading(false);
     }
   };
+
   if (session) {
     return (
       <>
