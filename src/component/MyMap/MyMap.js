@@ -13,7 +13,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
   const [viewport, setViewport] = useState({
     latitude: 52.531677,
     longitude: 13.381777,
-    zoom: 2,
+    zoom: 10,
   });
 
   return (
@@ -27,7 +27,7 @@ export default function MyMap({ locations, marker, /* setMarker, */ onClick }) {
         maxZoom={15}
         style={{ width: "100vw", height: "50vh" }}
         onClick={onClick}
-        mapStyle="mapbox://styles/thomas9291/cljh3lnll00e401pi8m769f8e"
+        mapStyle="mapbox://styles/thomas9291/cljn9e70f00eg01o4edit1358"
       >
         {locations &&
           locations.map(({ latitude, longitude, _id }) => (
