@@ -47,7 +47,6 @@ export default function DetailsPage() {
     e.preventDefault();
     const data = new FormData();
     data.set("sample_file", file);
-    data.set("placeId", id);
     try {
       const res = await axios.post(`/api/upload/upload?id=${id}`, data);
 

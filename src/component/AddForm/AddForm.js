@@ -6,7 +6,7 @@ export default function AddForm({ onSubmit, defaultData, marker }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    console.log("formDta", formData);
+    /* console.log("formDta", formData); */
     const data = Object.fromEntries(formData);
     data.latitude = marker.latitude;
     data.longitude = marker.longitude;

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import SearchLocation from "../SearchLocation/SearchLocation";
 
 export default function NavBar({ onClick }) {
   return (
@@ -24,6 +25,9 @@ export default function NavBar({ onClick }) {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li>
+              <SearchLocation />
+            </li>
             <li className="nav-item">
               <Link
                 className="nav-link active"
