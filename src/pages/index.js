@@ -8,7 +8,7 @@ import NavBar from "../component/NavBar/NavBar";
 import CartDetail from "../component/CartDetail/CartDetail";
 import MyMap from "../component/MyMap/MyMap";
 //map geolocalisation
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { GeolocateControl } from "react-map-gl";
 //map geolocalisation
 
@@ -22,6 +22,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Component() {
   const { data: session } = useSession();
+
   //map geolocalisation component
   const geoControlRef = useRef();
   useEffect(() => {
@@ -31,14 +32,18 @@ export default function Component() {
   //map geolocalisation component
 
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
+  const { data: user, isLoading } = useSWR("/api/user", { fallbackData: [] });
+
   console.log("placesList from home page:", placesList);
+  console.log("user from homePage:", user);
+  if (isLoading) return <div className="z-index-3 ">loading...</div>;
   if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div>
-            <MyMap locations={placesList}>
+            <MyMap locations={placesList} coordinates={user[0]?.coordinates}>
               <GeolocateControl ref={geoControlRef} />
             </MyMap>
           </div>

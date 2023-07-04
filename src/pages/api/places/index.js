@@ -16,7 +16,6 @@ export default async function Handler(request, response) {
   }
   if (request.method === "POST") {
     try {
-      console.log("TRYSTARTER");
       //if user ...
       if (id) {
         const placeData = request.body;
