@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
+import useSWR from "swr";
 
 import NavBar from "../component/NavBar/NavBar";
 import AddForm from "@/component/AddForm/AddForm";
@@ -32,7 +33,9 @@ export default function Create() {
   const handleClick = ({ lngLat: { lat, lng } }) => {
     setMarker({ longitude: lng, latitude: lat });
   };
+  const { data: user, isLoading } = useSWR("/api/user", { fallbackData: [] });
 
+  if (isLoading) return <div className="z-index-3 ">loading...</div>;
   if (session) {
     return (
       <>
@@ -43,6 +46,7 @@ export default function Create() {
               marker={marker}
               onClick={handleClick}
               setMarker={setMarker}
+              coordinates={user[0]?.coordinates}
             />
           </div>
         </div>

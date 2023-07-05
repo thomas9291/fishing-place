@@ -1,14 +1,10 @@
 import React from "react";
-import useSWR, { useSWRConfig } from "swr";
+import { useSWRConfig } from "swr";
 import { useSession } from "next-auth/react";
-/* import { useRouter } from "next/navigation"; */
 
 export default function SearchLocation() {
-  /* const { push } = useRouter(); */
-
   const { mutate } = useSWRConfig();
   const { data: session } = useSession();
-  const place = useSWR("/api/places");
   async function searchHandler(event) {
     event.preventDefault();
     const formData = new FormData(event.target);

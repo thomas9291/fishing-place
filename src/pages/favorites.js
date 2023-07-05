@@ -20,13 +20,19 @@ export default function Favorites() {
   const filteredFavorite = placesList.filter(
     (element) => element.favorite === "true"
   );
+  const { data: user, isLoading } = useSWR("/api/user", { fallbackData: [] });
+
+  if (isLoading) return <div className="z-index-3 ">loading...</div>;
   if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div /* style={{ height: "50vh" }} */>
-            <MyMap locations={filteredFavorite} />
+            <MyMap
+              locations={filteredFavorite}
+              coordinates={user[0]?.coordinates}
+            />
           </div>
           <div
             style={{ width: "100%" }}
