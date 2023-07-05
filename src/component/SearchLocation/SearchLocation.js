@@ -1,11 +1,9 @@
 import React from "react";
-/* import { useSWRConfig } from "swr"; */
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export default function SearchLocation() {
   const router = useRouter();
-  /* const { mutate } = useSWRConfig(); */
   const { data: session } = useSession();
   async function searchHandler(event) {
     event.preventDefault();
@@ -32,7 +30,6 @@ export default function SearchLocation() {
     if (!response.ok) {
       console.error(`There was an error: ${response.status}`);
     } else {
-      /*  mutate(); */
       router.reload();
     }
   }

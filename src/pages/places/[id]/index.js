@@ -136,7 +136,7 @@ export default function DetailsPage() {
                   return (
                     <SwiperSlide key={index}>
                       <Image
-                        style={{ objectFit: "fill" }}
+                        style={{ objectFit: "cover" }}
                         src={image}
                         alt="image from autor"
                         width={200}

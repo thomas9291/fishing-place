@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
-  margin: 1rem 5em;
-  width: 50%;
+  align-items: center;
+  margin: 5%;
+  max-width: 800px;
+  width: 90%;
+  justify-self: center;
 }
 .listGroup {
   display: flex;
@@ -35,4 +37,5 @@
   margin: 0.5rem;
   border-radius: 1rem;
   border: 1px solid black;
+  width: 90%;
 }
