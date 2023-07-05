@@ -20,7 +20,13 @@ export default function CartDetail({
       <div className={classes.containerCard}>
         <h5 className={classes.cardTitle}>{name}</h5>
         <div style={{ width: "100%", margin: "0.5rem" }}>
-          <Image src={images} width={200} height={200} alt="Waiting for foto" />
+          <Image
+            style={{ objectFit: "fill" }}
+            src={images}
+            width={200}
+            height={200}
+            alt="Waiting for foto"
+          />
         </div>
         {/* <div className={classes.cardBody}> */}
         <div className={classes.cardBody}>

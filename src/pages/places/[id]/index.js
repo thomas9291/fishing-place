@@ -3,10 +3,11 @@ import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import NavBar from "@/component/NavBar/NavBar";
 import { useSession, signIn, signOut } from "next-auth/react";
+//cloudinary
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-
+//cloudinary
 import CartDetail from "@/component/CartDetail/CartDetail";
 import MyMap from "@/component/MyMap/MyMap";
 
@@ -18,13 +19,15 @@ import { EffectCoverflow, Pagination } from "swiper";
 
 export default function DetailsPage() {
   const [loading, setLoading] = useState(false);
+  //cloudinary
   const [res, setRes] = useState({});
   const [file, setFile] = useState(null);
+  const [fotoForm, setFotoForm] = useState(false);
+  //cloudinary
   const router = useRouter();
   const { isReady, push } = router;
   const { id } = router.query;
   const { data: session } = useSession();
-  const [fotoForm, setFotoForm] = useState(false);
 
   const handelFotoForm = () => {
     setFotoForm(!fotoForm);
@@ -40,7 +43,7 @@ export default function DetailsPage() {
     });
     push("/");
   }
-
+  //cloudinary
   const handleSelectFile = (e) => setFile(e.target.files[0]);
   const uploadFile = async (e) => {
     setLoading(true);
@@ -57,7 +60,7 @@ export default function DetailsPage() {
       setLoading(false);
     }
   };
-
+  //cloudinary
   if (session) {
     return (
       <>
@@ -133,6 +136,7 @@ export default function DetailsPage() {
                   return (
                     <SwiperSlide key={index}>
                       <Image
+                        style={{ objectFit: "fill" }}
                         src={image}
                         alt="image from autor"
                         width={200}
