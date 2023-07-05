@@ -31,7 +31,7 @@ export default function DetailsPage() {
   };
 
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
-
+  const { data: user } = useSWR("/api/user", { fallbackData: [] });
   if (!isReady || isLoading || error)
     return <h2 className="text-light-emphasis">Loading...</h2>;
   async function deletePlace() {
@@ -64,7 +64,7 @@ export default function DetailsPage() {
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div style={{ height: "50vh" }}>
-            <MyMap locations={[place]} />
+            <MyMap locations={[place]} coordinates={user[0]?.coordinates} />
           </div>
           <div
             style={{ backgroundColor: "white", width: "100%" }}

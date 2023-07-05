@@ -7,16 +7,12 @@ import pin from "./location_on_FILL1_wght400_GRAD0_opsz48.svg";
 
 export default function MyMap({ locations, marker, onClick, coordinates }) {
   const mapRef = useRef(null);
-  /*  const initialLatitude = coordinates ? coordinates.latitude : 52.531677;
-  const initialLongitude = coordinates ? coordinates.longitude : 13.381777; */
 
   const [viewport, setViewport] = useState({
     latitude: coordinates ? coordinates[0]?.latitude : 52.531677,
     longitude: coordinates ? coordinates[0]?.longitude : 13.381777,
     zoom: 10,
   });
-  console.log("initial value latitude:", viewport);
-  /*  console.log("initial value longitude:", initialLongitude); */
 
   return (
     <div className=" position-relative ">

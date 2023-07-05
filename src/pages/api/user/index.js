@@ -11,7 +11,6 @@ export default async function Handler(request, response) {
   if (request.method === "GET") {
     //filter the place where the user is login
     const user = await User.find({ _id: id });
-    console.log("user fom api:", user, id);
     return response.status(200).json(user);
   }
   if (request.method === "POST") {

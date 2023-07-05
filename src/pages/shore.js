@@ -17,17 +17,23 @@ import { EffectCoverflow, Pagination } from "swiper";
 export default function Shore() {
   const { data: session } = useSession();
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
-  console.log("placeslISTE FROM FAVORITE PAGE:", placesList);
+
   const filteredFavorite = placesList.filter(
     (element) => element.shore === "true"
   );
+
+  const { data: user, isLoading } = useSWR("/api/user", { fallbackData: [] });
+  if (isLoading) return <div className="z-index-3 ">loading...</div>;
   if (session) {
     return (
       <>
         <NavBar onClick={() => signOut()} />
         <div className="d-flex flex-column align-items-center ">
           <div /* style={{ height: "50vh" }} */>
-            <MyMap locations={filteredFavorite} />
+            <MyMap
+              locations={filteredFavorite}
+              coordinates={user[0]?.coordinates}
+            />
           </div>
           <div
             style={{ width: "100%" }}

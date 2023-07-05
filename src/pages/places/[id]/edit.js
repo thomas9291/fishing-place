@@ -14,7 +14,7 @@ export default function EditPage() {
   const { data: session } = useSession();
 
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
-
+  const { data: user } = useSWR("/api/user", { fallbackData: [] });
   async function editPlace(place) {
     const response = await fetch(`/api/places/${id}`, {
       method: "PUT",
@@ -43,7 +43,12 @@ export default function EditPage() {
         <h2 id="edit-place">Edit Place</h2>
         <div>
           <div style={{ height: "50vh" }}>
-            <MyMap locations={[place]} marker={marker} onClick={handleClick} />
+            <MyMap
+              locations={[place]}
+              marker={marker}
+              onClick={handleClick}
+              coordinates={user[0]?.coordinates}
+            />
           </div>
         </div>
         <div>

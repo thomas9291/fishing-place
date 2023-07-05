@@ -34,8 +34,6 @@ export default function Component() {
   const { data: placesList } = useSWR("/api/places", { fallbackData: [] });
   const { data: user, isLoading } = useSWR("/api/user", { fallbackData: [] });
 
-  console.log("placesList from home page:", placesList);
-  console.log("user from homePage:", user);
   if (isLoading) return <div className="z-index-3 ">loading...</div>;
   if (session) {
     return (
