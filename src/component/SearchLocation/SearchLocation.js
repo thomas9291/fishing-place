@@ -1,16 +1,18 @@
 import React from "react";
-import { useSWRConfig } from "swr";
+/* import { useSWRConfig } from "swr"; */
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function SearchLocation() {
-  const { mutate } = useSWRConfig();
+  const router = useRouter();
+  /* const { mutate } = useSWRConfig(); */
   const { data: session } = useSession();
   async function searchHandler(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const mapUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${data.searchCity}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}`;
-    console.log("data from input search", data.searchCity);
+
     const coorResponse = await fetch(mapUrl);
     const coorData = await coorResponse.json();
     const coordinates = coorData?.features[0]?.center;
@@ -30,7 +32,8 @@ export default function SearchLocation() {
     if (!response.ok) {
       console.error(`There was an error: ${response.status}`);
     } else {
-      mutate();
+      /*  mutate(); */
+      router.reload();
     }
   }
 
