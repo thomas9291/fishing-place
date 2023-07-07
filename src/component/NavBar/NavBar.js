@@ -83,7 +83,7 @@ export default function NavBar({ onClick }) {
               </ul>
             </li>
             <li className="nav-item">
-              <button className="nav-link  " onClick={onClick}>
+              <button className="nav-link signout " onClick={onClick}>
                 Sign out
               </button>
             </li>
