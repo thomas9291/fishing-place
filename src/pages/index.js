@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { useSession, signIn, signOut } from "next-auth/react";
 import useSWR from "swr";
 import Link from "next/link";
+import InitialInfo from "@/component/InitialInfo/InitialInfo";
 
 import NavBar from "../component/NavBar/NavBar";
 import CartDetail from "../component/CartDetail/CartDetail";
@@ -22,7 +23,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Component() {
   const { data: session } = useSession();
-
+  const [info, setInfo] = useState(false);
+  const toggleInfo = () => {
+    setInfo(!info);
+  };
   //map geolocalisation component
   const geoControlRef = useRef();
   useEffect(() => {
@@ -38,13 +42,18 @@ export default function Component() {
   if (session) {
     return (
       <>
-        <NavBar onClick={() => signOut()} />
+        <NavBar onClick={() => signOut()} onClickInfo={toggleInfo} />
         <div className="d-flex flex-column align-items-center ">
           <div>
             <MyMap locations={placesList} coordinates={user[0]?.coordinates}>
               <GeolocateControl ref={geoControlRef} />
             </MyMap>
           </div>
+          <button className="btnInfo" onClick={toggleInfo}>
+            {info ? "back" : "info"}
+          </button>
+
+          {info && <InitialInfo onClick={toggleInfo} />}
           <div
             style={{ width: "100%" }}
             className="border border-3 border-white"
