@@ -39,7 +39,7 @@ export default function Create() {
   if (session) {
     return (
       <>
-        <NavBar />
+        <NavBar onClick={() => signOut()} />
         <div>
           <div style={{ height: "50vh" }}>
             <MyMap
